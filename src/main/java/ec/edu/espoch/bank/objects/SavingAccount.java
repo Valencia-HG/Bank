@@ -10,7 +10,7 @@ package ec.edu.espoch.bank.objects;
  */
 public class SavingAccount extends Account {
 
-    protected boolean state;
+    protected boolean state = false;
 
     public SavingAccount(boolean state, float balance, float annualInterestRate) {
         super(balance, annualInterestRate);

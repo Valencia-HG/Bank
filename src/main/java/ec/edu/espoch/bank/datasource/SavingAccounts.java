@@ -5,6 +5,7 @@
 package ec.edu.espoch.bank.datasource;
 
 import ec.edu.espoch.bank.daointerface.DaoSavingAccounts;
+import ec.edu.espoch.bank.objects.SavingAccount;
 
 /**
  *
@@ -12,8 +13,17 @@ import ec.edu.espoch.bank.daointerface.DaoSavingAccounts;
  */
 public class SavingAccounts extends Accounts implements DaoSavingAccounts {
 
+    public SavingAccounts(SavingAccount savingAccount) {
+        if (savingAccount.getBalance() > 1000) {
+            savingAccount.setState(true);
+        }
+    }
+
     @Override
-    public boolean deposit(float value) {
+    public boolean deposit(SavingAccount savingAccount, float value) {
+        if (savingAccount.isState()) {
+            super(deposit(savingAccount,value));
+        }
         return true;
     }
 

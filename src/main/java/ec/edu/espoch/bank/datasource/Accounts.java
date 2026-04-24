@@ -19,7 +19,13 @@ public class Accounts {
         return true;
     }
 
-    public boolean withdraw(float value) {
+    public boolean withdraw(Account account, float value) {
+        boolean resp = false;
+        if (account.getBalance() > value) {
+            float newBalance = account.getBalance() - value;
+            account.setBalance(newBalance);
+            resp = true;
+        }
         return true;
     }
 
@@ -32,7 +38,7 @@ public class Accounts {
     }
 
     public void print(Account account) {
-        System.out.println("Saldo" + account.getBalance());
+        System.out.println("Saldo: " + account.getBalance());
         System.out.println("Numero depositos: " + account.getNumberDeposits());
         System.out.println("Numero retiros: " + account.getNumberWithdrawals());
         System.out.println("Interes anual: " + account.getAnnualInterestRate());
