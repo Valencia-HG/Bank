@@ -21,15 +21,20 @@ public class SavingAccounts extends Accounts implements DaoSavingAccounts {
 
     @Override
     public boolean deposit(SavingAccount savingAccount, float value) {
+        boolean resp = false;
         if (savingAccount.isState()) {
-            super(deposit(savingAccount,value));
+            resp = super.deposit(savingAccount, value);
         }
-        return true;
+        return resp;
     }
 
     @Override
-    public boolean withdraw(float value) {
-        return true;
+    public boolean withdraw(SavingAccount savingAccount, float value) {
+        boolean resp = false;
+        if (savingAccount.isState()) {
+            resp = super.deposit(savingAccount, value);
+        }
+        return resp;
     }
 
     @Override
